@@ -21,6 +21,15 @@ public class Input {
     rawData = try? String(contentsOf: fromURL)
   }
 
+  public init(day: Int, relativeTo: String) {
+    let callingFileURL = URL.init(fileURLWithPath: relativeTo)
+    let dataDirectoryURL = URL.init(fileURLWithPath: "../../../data", relativeTo: callingFileURL)
+    let dataFileName = String(format: "%02d.txt", day)
+    let dataURL = URL.init(fileURLWithPath: dataFileName, relativeTo: dataDirectoryURL)
+      .standardizedFileURL
+    rawData = try? String(contentsOf: dataURL)
+  }
+
   public func asString() -> String {
     return rawData!
   }
