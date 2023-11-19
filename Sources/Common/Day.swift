@@ -18,7 +18,10 @@ public protocol Day {
 
 extension Day {
   public func run(day: Int) throws {
-    let input = Input(day: day, relativeTo: #file)
+    let input = Input(
+      day: day,
+      relativeTo: URL(
+        fileURLWithPath: "../../..", isDirectory: true, relativeTo: URL(fileURLWithPath: #file)))
 
     try part1(input)
     try part2(input)

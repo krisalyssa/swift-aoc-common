@@ -21,12 +21,15 @@ public class Input {
     rawData = try? String(contentsOf: fromURL)
   }
 
-  public init(day: Int, relativeTo: String) {
-    let callingFileURL = URL.init(fileURLWithPath: relativeTo)
-    let dataDirectoryURL = URL.init(fileURLWithPath: "../../../data", relativeTo: callingFileURL)
+  // relativeTo should be the directory containing the "data" directory
+  public init(day: Int, relativeTo: URL) {
+    let callingFileURL = URL(fileURLWithPath: ".", relativeTo: relativeTo)
+    let dataDirectoryURL = URL(
+      fileURLWithPath: "data", isDirectory: true, relativeTo: callingFileURL)
     let dataFileName = String(format: "%02d.txt", day)
-    let dataURL = URL.init(fileURLWithPath: dataFileName, relativeTo: dataDirectoryURL)
+    let dataURL = URL(fileURLWithPath: dataFileName, relativeTo: dataDirectoryURL)
       .standardizedFileURL
+
     rawData = try? String(contentsOf: dataURL)
   }
 
@@ -39,6 +42,6 @@ public class Input {
   }
 
   public func asIntArray() -> [Int] {
-    return asStringArray().map { Int.init($0)! }
+    return asStringArray().map { Int($0)! }
   }
 }
