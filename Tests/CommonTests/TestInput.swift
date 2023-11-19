@@ -13,26 +13,17 @@ import XCTest
 @testable import Common
 
 class TestInput: XCTestCase {
-  func makeInput(_ fileName: String) -> Input {
-    let dataFileURL = URL(
-      fileURLWithPath: fileName,
-      relativeTo: URL(fileURLWithPath: "support", relativeTo: URL(fileURLWithPath: #file))
-    ).standardizedFileURL
-    let input = Input(fromURL: dataFileURL)
-    XCTAssertNotNil(input)
-    return input
-  }
-
-  func intListInput() -> Input {
-    return makeInput("int-list.txt")
-  }
-
-  func stringListInput() -> Input {
-    return makeInput("string-list.txt")
-  }
-
   func testInitString() throws {
     XCTAssertEqual(Input(data: "foo").rawData, "foo")
+  }
+
+  func testInitDay() throws {
+    let url = URL(
+      fileURLWithPath: "support", isDirectory: true,
+      relativeTo: URL(fileURLWithPath: #file))
+
+    let input = Input(day: 1, relativeTo: url)
+    XCTAssertEqual(input.asIntArray(), [123, 456, 789])
   }
 
   func testRawData() throws {
@@ -49,5 +40,25 @@ class TestInput: XCTestCase {
 
   func testAsIntArray() throws {
     XCTAssertEqual(intListInput().asIntArray(), [1, 2, 3])
+  }
+
+  // helper functions
+
+  func makeInput(_ fileName: String) -> Input {
+    let dataFileURL = URL(
+      fileURLWithPath: fileName,
+      relativeTo: URL(fileURLWithPath: "support", relativeTo: URL(fileURLWithPath: #file))
+    ).standardizedFileURL
+    let input = Input(fromURL: dataFileURL)
+    XCTAssertNotNil(input)
+    return input
+  }
+
+  func intListInput() -> Input {
+    return makeInput("int-list.txt")
+  }
+
+  func stringListInput() -> Input {
+    return makeInput("string-list.txt")
   }
 }
