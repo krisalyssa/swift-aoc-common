@@ -11,17 +11,17 @@
 import Foundation
 
 public protocol Day {
-  func run(day: Int) throws
+  func run(day: Int, caller: String) throws
   func part1(_ input: Input) throws
   func part2(_ input: Input) throws
 }
 
 extension Day {
-  public func run(day: Int) throws {
+  public func run(day: Int, caller: String = #file) throws {
     let input = Input(
       day: day,
       relativeTo: URL(
-        fileURLWithPath: "../../..", isDirectory: true, relativeTo: URL(fileURLWithPath: #file)))
+        fileURLWithPath: "../../..", isDirectory: true, relativeTo: URL(fileURLWithPath: caller)))
 
     try part1(input)
     try part2(input)
