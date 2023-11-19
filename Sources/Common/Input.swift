@@ -1,25 +1,35 @@
+/******************************************************************************
+ **
+ ** Copyright (c) 2023 Craig S. Cottingham
+ ** Licensed under the MIT License.
+ **
+ ** See https://github.com/CraigCottingham/swift-aoc-common/blob/main/LICENSE
+ ** for license information.
+ **
+ **/
+
 import Foundation
 
 public class Input {
   var rawData: String?
 
-  init(data: String) {
+  public init(data: String) {
     rawData = data
   }
 
-  init(fromURL: URL) {
+  public init(fromURL: URL) {
     rawData = try? String(contentsOf: fromURL)
   }
 
-  func asString() -> String {
+  public func asString() -> String {
     return rawData!
   }
 
-  func asStringArray() -> [String.SubSequence] {
+  public func asStringArray() -> [String.SubSequence] {
     return rawData!.split(separator: "\n")
   }
 
-  func asIntArray() -> [Int] {
+  public func asIntArray() -> [Int] {
     return asStringArray().map { Int.init($0)! }
   }
 }

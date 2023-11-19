@@ -1,5 +1,15 @@
 // swift-tools-version: 5.9
 
+/******************************************************************************
+ **
+ ** Copyright (c) 2023 Craig S. Cottingham
+ ** Licensed under the MIT License.
+ **
+ ** See https://github.com/CraigCottingham/swift-aoc-common/blob/main/LICENSE
+ ** for license information.
+ **
+ **/
+
 import PackageDescription
 
 let package = Package(
