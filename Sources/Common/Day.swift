@@ -11,7 +11,7 @@
 import Foundation
 
 public protocol Day {
-  func run(_ day: Int) throws
+  func run(day: Int) throws
   func part1(_ input: Input) throws
   func part2(_ input: Input) throws
 }
