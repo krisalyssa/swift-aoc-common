@@ -37,8 +37,8 @@ public class Input {
     return rawData!
   }
 
-  public func asStringArray() -> [String.SubSequence] {
-    return rawData!.split(separator: "\n")
+  public func asStringArray() -> [String] {
+    return rawData!.split(separator: "\n").map { String($0) }
   }
 
   public func asIntArray() -> [Int] {
