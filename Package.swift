@@ -17,7 +17,7 @@ let package = Package(
   products: [
     .library(
       name: "Common",
-      targets: ["Common"])
+      targets: ["Common", "Collections"])
   ],
   dependencies: [
     // .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
@@ -28,14 +28,24 @@ let package = Package(
       name: "Common"  // ,
         // dependencies: ["CoreLibraries"]
     ),
+
+    .target(name: "Collections"),
+
     // .target(
     //     name: "CoreLibraries", dependencies: [
     //         // .product(name: "Algorithms", package: "swift-algorithms"),
     //         // .product(name: "Collections", package: "swift-collections"),
     //     ]),
+
     .testTarget(
       name: "CommonTests",
       dependencies: ["Common"],
+      exclude: ["support"]
+    ),
+
+    .testTarget(
+      name: "CollectionsTests",
+      dependencies: ["Collections"],
       exclude: ["support"]
     ),
   ]
