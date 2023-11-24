@@ -30,16 +30,20 @@ class TestInput: XCTestCase {
     XCTAssertEqual(stringListInput().rawData, "foo\nbar\nbaz")
   }
 
+  func testAsCharacterArray() throws {
+    XCTAssertEqual(Input(data: "foo").asCharacterArray(), ["f", "o", "o"])
+  }
+
+  func testAsIntArray() throws {
+    XCTAssertEqual(intListInput().asIntArray(), [1, 2, 3])
+  }
+
   func testAsString() throws {
     XCTAssertEqual(stringListInput().asString(), "foo\nbar\nbaz")
   }
 
   func testAsStringArray() throws {
     XCTAssertEqual(stringListInput().asStringArray(), ["foo", "bar", "baz"])
-  }
-
-  func testAsIntArray() throws {
-    XCTAssertEqual(intListInput().asIntArray(), [1, 2, 3])
   }
 
   // helper functions

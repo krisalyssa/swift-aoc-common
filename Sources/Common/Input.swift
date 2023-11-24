@@ -33,15 +33,19 @@ public class Input {
     rawData = try? String(contentsOf: dataURL)
   }
 
+  public func asCharacterArray() -> [Character] {
+    return Array(rawData!)
+  }
+
+  public func asIntArray() -> [Int] {
+    return asStringArray().map { Int($0)! }
+  }
+
   public func asString() -> String {
     return rawData!
   }
 
   public func asStringArray() -> [String] {
     return rawData!.split(separator: "\n").map { String($0) }
-  }
-
-  public func asIntArray() -> [Int] {
-    return asStringArray().map { Int($0)! }
   }
 }
