@@ -19,7 +19,7 @@ class TestInput: XCTestCase {
 
   func testInitDay() throws {
     let url = URL(
-      fileURLWithPath: "support", isDirectory: true,
+      fileURLWithPath: "../support", isDirectory: true,
       relativeTo: URL(fileURLWithPath: #file))
 
     let input = Input(day: 1, relativeTo: url)
@@ -51,7 +51,7 @@ class TestInput: XCTestCase {
   func makeInput(_ fileName: String) -> Input {
     let dataFileURL = URL(
       fileURLWithPath: fileName,
-      relativeTo: URL(fileURLWithPath: "support", relativeTo: URL(fileURLWithPath: #file))
+      relativeTo: URL(fileURLWithPath: "../support", relativeTo: URL(fileURLWithPath: #file))
     ).standardizedFileURL
     let input = Input(fromURL: dataFileURL)
     XCTAssertNotNil(input)
