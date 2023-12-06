@@ -16,8 +16,8 @@ let package = Package(
   name: "swift-aoc-common",
   products: [
     .library(
-      name: "Common",
-      targets: ["Common", "Collections", "Extensions", "Geometry"])
+      name: "AoCCommon",
+      targets: ["AoCCommon", "AoCCollections", "AoCExtensions", "AoCGeometry"])
   ],
   dependencies: [
     // .package(url: "https://github.com/apple/swift-algorithms.git", from: "1.0.0"),
@@ -25,38 +25,39 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: "Common"  // ,
+      name: "AoCCommon",
+      path: "Sources/Common"  // ,
         // dependencies: ["CoreLibraries"]
     ),
 
-    .target(name: "Collections"),
-    .target(name: "Extensions"),
-    .target(name: "Geometry"),
+    .target(name: "AoCCollections", path: "Sources/Collections"),
+    .target(name: "AoCExtensions", path: "Sources/Extensions"),
+    .target(name: "AoCGeometry", path: "Sources/Geometry"),
 
     // .target(
     //     name: "CoreLibraries", dependencies: [
     //         // .product(name: "Algorithms", package: "swift-algorithms"),
-    //         // .product(name: "Collections", package: "swift-collections"),
+    //         // .product(name: "AoCCollections", package: "swift-collections"),
     //     ]),
 
     .testTarget(
       name: "CommonTests",
-      dependencies: ["Common"]
+      dependencies: ["AoCCommon"]
     ),
 
     .testTarget(
       name: "CollectionsTests",
-      dependencies: ["Collections"]
+      dependencies: ["AoCCollections"]
     ),
 
     .testTarget(
       name: "ExtensionsTests",
-      dependencies: ["Extensions"]
+      dependencies: ["AoCExtensions"]
     ),
 
     .testTarget(
       name: "GeometryTests",
-      dependencies: ["Geometry"]
+      dependencies: ["AoCGeometry"]
     ),
   ]
 )
