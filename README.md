@@ -29,7 +29,7 @@ Finally, add `import Common` to your source code.
 
 MIT License
 
-Copyright (c) 2023 Craig S. Cottingham
+Copyright (c) 2023-2024 Kris Cottingham.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
