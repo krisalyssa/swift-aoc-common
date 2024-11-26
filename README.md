@@ -12,18 +12,18 @@ To use the `swift-aoc-common` library in the solutions for an Advent of Code pro
 add the following line to the dependencies in your `Package.swift` file.
 
 ```swift
-.package(url: "https://github.com/CraigCottingham/swift-aoc-common", from: "1.0.0"),
+.package(url: "https://github.com/krisalyssa/swift-aoc-common", from: "1.0.0"),
 ```
 
-Then include `"Common"` as a dependency for your executable target.
+Then include `"AoCCommon"` as a dependency for your executable target.
 
 ```swift
 .target(name: "<target>", dependencies: [
-    .product(name: "Common", package: "swift-aoc-common"),
+    .product(name: "AoCCommon", package: "swift-aoc-common"),
 ]),
 ```
 
-Finally, add `import Common` to your source code.
+Finally, add `import AoCCommon` to your source code.
 
 ## License
 
